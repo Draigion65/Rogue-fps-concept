@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://blx517wrxnhar"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq8dv6j77u3rr" path="res://Models/OffsetCube.obj" id="1_3sve4"]
+[ext_resource type="Material" uid="uid://djm2vo07g2fuw" path="res://Mats/DoorMat.tres" id="1_q3dfh"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_v5bll"]
+[ext_resource type="Material" uid="uid://t30xtgb18lgs" path="res://Mats/WorldMaterial.tres" id="3_v6b74"]
+[ext_resource type="Material" uid="uid://kpehxec2333f" path="res://Mats/SkyMaterial.tres" id="4_xhxc1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgvmr"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8nx7"]
+size = Vector3(2.4, 2.2, 2.4)
+
+[node name="DoorObj" type="Node3D"]
+script = ExtResource("1_v5bll")
+doorDownTime = 5.0
+
+[node name="Door" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_q3dfh")
+mesh = ExtResource("1_3sve4")
+surface_material_override/0 = ExtResource("3_v6b74")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+shape = SubResource("BoxShape3D_kgvmr")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("1_3sve4")
+surface_material_override/0 = ExtResource("4_xhxc1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+shape = SubResource("BoxShape3D_kgvmr")
+
+[node name="DoorResponder" type="Area3D" parent="."]
+collision_mask = 160
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorResponder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+shape = SubResource("BoxShape3D_g8nx7")

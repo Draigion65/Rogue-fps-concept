@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bb4tbx14ur6d4"]
+
+[ext_resource type="Texture2D" uid="uid://ce6hh1d1cwclv" path="res://Guns/PipeGun/AlbTex.png" id="1_ht4kh"]
+[ext_resource type="Texture2D" uid="uid://b2xcma8fekeig" path="res://Guns/PipeGun/ShineTex.png" id="2_pue63"]
+
+[resource]
+albedo_texture = ExtResource("1_ht4kh")
+metallic = 1.0
+metallic_texture = ExtResource("2_pue63")
+roughness_texture = ExtResource("2_pue63")
+texture_filter = 0
+texture_repeat = false

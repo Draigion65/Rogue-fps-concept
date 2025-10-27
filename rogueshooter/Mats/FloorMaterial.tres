@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dnimayjivfmxt"]
+
+[ext_resource type="Texture2D" uid="uid://dfm730agpsva6" path="res://Mats/DevSquare.png" id="1_nm083"]
+
+[resource]
+albedo_texture = ExtResource("1_nm083")
+texture_filter = 0
+texture_repeat = false

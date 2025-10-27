@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbfndtdanibgs"]
+
+[ext_resource type="Script" path="res://Scripts/abstract_gun.gd" id="1_x8xce"]
+[ext_resource type="ArrayMesh" uid="uid://dtmjhfvmg0n1e" path="res://Guns/PipeGun/UKGUN.obj" id="2_0xsyl"]
+[ext_resource type="Material" uid="uid://bb4tbx14ur6d4" path="res://Guns/PipeGun/PipeGun.tres" id="3_n1sau"]
+[ext_resource type="Texture2D" uid="uid://b4oiaw0jy0a46" path="res://MiscSprites/CrossStraight.png" id="4_dm7w5"]
+
+[node name="GenericGun" type="Node3D"]
+script = ExtResource("1_x8xce")
+gunToLoadName = "PipeGun.tscn"
+rotLerpRate = 0.8
+aimRecoverySpeed = 0.3
+posLerpRate = 0.8
+kickAngleHigh = Vector2(20, -4)
+kickAngleLow = Vector2(10, -2)
+spread = Vector2(0.03, 0.03)
+fireRate = 0.05
+fireObjName = "hitscan_ray"
+damage = 20
+distance = 200.0
+falloffRate = 0.7
+knockBack = 10.0
+muzzleDarkLerp = 0.2
+
+[node name="FlashLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+layers = 3
+light_energy = 2.7
+light_indirect_energy = 0.3
+light_volumetric_fog_energy = 0.1
+spot_range = 40.0
+spot_attenuation = 1.1
+spot_angle = 35.0
+spot_angle_attenuation = 4.0
+
+[node name="ReloadPos" type="Node3D" parent="."]
+transform = Transform3D(-0.353553, 0.353553, -3.09086e-08, 0.353553, 0.353553, 3.09086e-08, 4.37114e-08, 0, -0.5, 0.3, -0.3, 0.3)
+
+[node name="OffsetNode" type="Node3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0.3, -0.3, -0.7)
+
+[node name="GunMdl" type="MeshInstance3D" parent="OffsetNode"]
+layers = 2
+mesh = ExtResource("2_0xsyl")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_n1sau")
+
+[node name="MuzzFlashLight" type="OmniLight3D" parent="OffsetNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355, 1.2)
+layers = 3
+light_color = Color(1, 0.907448, 0.641432, 1)
+light_energy = 0.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+omni_range = 50.0
+
+[node name="CrossHairRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -400)
+
+[node name="CrosshairSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+billboard = 1
+double_sided = false
+no_depth_test = true
+fixed_size = true
+texture_filter = 0
+texture = ExtResource("4_dm7w5")

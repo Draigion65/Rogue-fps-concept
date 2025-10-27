@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://2leit2asaffc"]
+
+[ext_resource type="Script" path="res://Scripts/hitscan_ray.gd" id="1_4ktjg"]
+
+[node name="HitscanRay" type="RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3)
+target_position = Vector3(0, 0, -1)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+script = ExtResource("1_4ktjg")

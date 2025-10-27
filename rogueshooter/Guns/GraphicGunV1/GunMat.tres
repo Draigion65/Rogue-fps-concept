@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dwinliq1up2le"]
+
+[ext_resource type="Texture2D" uid="uid://bowv8mejec1sl" path="res://Guns/GraphicGunV1/GunTex.png" id="1_q0klt"]
+
+[resource]
+albedo_texture = ExtResource("1_q0klt")
+rim_enabled = true
+rim = 0.2
+rim_tint = 0.15
+rim_texture = ExtResource("1_q0klt")
+clearcoat_roughness = 0.24
+clearcoat_texture = ExtResource("1_q0klt")
+heightmap_scale = 16.0
+backlight_texture = ExtResource("1_q0klt")
+texture_filter = 0
+texture_repeat = false

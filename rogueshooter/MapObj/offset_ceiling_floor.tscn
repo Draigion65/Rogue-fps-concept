@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bircxgd3nyrol"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq8dv6j77u3rr" path="res://Models/OffsetCube.obj" id="1_rel85"]
+[ext_resource type="Material" uid="uid://dnimayjivfmxt" path="res://Mats/FloorMaterial.tres" id="2_negyc"]
+[ext_resource type="Material" uid="uid://kpehxec2333f" path="res://Mats/SkyMaterial.tres" id="3_41667"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_upuhx"]
+size = Vector3(2, 1, 2)
+
+[node name="OffsetCeilingFloor" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = ExtResource("1_rel85")
+surface_material_override/0 = ExtResource("2_negyc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 1)
+shape = SubResource("BoxShape3D_upuhx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.5, 1)
+shape = SubResource("BoxShape3D_upuhx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+mesh = ExtResource("1_rel85")
+surface_material_override/0 = ExtResource("3_41667")

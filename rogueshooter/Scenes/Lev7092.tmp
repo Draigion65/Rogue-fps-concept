@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjy5sisnxo1g3"]
+
+[ext_resource type="Script" path="res://Scripts/SceneManagerMagic.gd" id="1_2ulyr"]
+[ext_resource type="PackedScene" uid="uid://crh4s8gc3qter" path="res://MapObj/offset_cube.tscn" id="2_ro6ot"]
+[ext_resource type="PackedScene" uid="uid://bircxgd3nyrol" path="res://MapObj/offset_ceiling_floor.tscn" id="3_7uej5"]
+[ext_resource type="Texture2D" uid="uid://drwdi3sy8d64g" path="res://icon.svg" id="5_a6070"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="8_ny24o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynome"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_2ulyr")
+xyScale = Vector2(20, 20)
+walkScale = 70
+stepScale = 35
+roomScale = 7
+
+[node name="OffsetCeilingFloor2" parent="." instance=ExtResource("3_7uej5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="OffsetCube2" parent="." instance=ExtResource("2_ro6ot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="GenericBody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -6)
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GenericBody"]
+shape = SubResource("CapsuleShape3D_ynome")
+
+[node name="Sprite3D" type="Sprite3D" parent="GenericBody"]
+transform = Transform3D(0.8, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("5_a6070")
+
+[node name="Player" type="RigidBody3D" parent="."]
+physics_interpolation_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 2.0
+can_sleep = false
+script = ExtResource("8_ny24o")
+moveVecScalar = Vector2(1, 1)
+rotVecScalar = Vector2(0.006, 0.006)
+dragf = 0.15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_ynome")
+
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.8, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0.2)
+texture = ExtResource("5_a6070")
+
+[node name="FPScam" type="Camera3D" parent="Player"]
+fov = 90.0

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://crh4s8gc3qter"]
+
+[ext_resource type="ArrayMesh" uid="uid://bq8dv6j77u3rr" path="res://Models/OffsetCube.obj" id="1_wbwts"]
+[ext_resource type="Material" uid="uid://t30xtgb18lgs" path="res://Mats/WorldMaterial.tres" id="2_dawy8"]
+[ext_resource type="Script" path="res://Scripts/MatRandomize.gd" id="3_fk6gj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ectb"]
+size = Vector3(1, 2, 1)
+
+[node name="OffsetCube" type="MeshInstance3D"]
+mesh = ExtResource("1_wbwts")
+surface_material_override/0 = ExtResource("2_dawy8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1, 2, 1)
+shape = SubResource("BoxShape3D_7ectb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("1_wbwts")
+script = ExtResource("3_fk6gj")

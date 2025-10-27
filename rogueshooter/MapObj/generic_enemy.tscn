@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://xpf1toahede7"]
+
+[ext_resource type="Script" path="res://Scripts/generic_enemy.gd" id="1_igfvf"]
+[ext_resource type="Texture2D" uid="uid://b6qqqsc8rukkf" path="res://MiscSprites/BabyVance.PNG" id="2_phu1a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h24wy"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynome"]
+
+[node name="GenericEnemy" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 33
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_h24wy")
+script = ExtResource("1_igfvf")
+zigLen = 40
+zigLenRanScale = 0.1
+zigVel = Vector2(0.3, 0.1)
+backOffDist = 2.0
+breakIntensity = 0.5
+straightLikelyhood = 0.4
+hpBase = 100.0
+drBase = 0.06
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ynome")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+shaded = true
+texture = ExtResource("2_phu1a")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
+collision_mask = 192
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 1

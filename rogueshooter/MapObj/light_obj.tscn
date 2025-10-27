@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhqknpeesbrai"]
+
+[ext_resource type="Texture2D" uid="uid://cel72gocmd11h" path="res://MiscSprites/LightSprites.png" id="1_b3qev"]
+
+[node name="LightObj" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+layers = 3
+light_color = Color(1, 1, 0.541176, 1)
+light_energy = 0.5
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.2
+omni_range = 7.0
+omni_attenuation = 1.2
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(1, 1, 1, 0.478431)
+billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("1_b3qev")

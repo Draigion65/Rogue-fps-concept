@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlyn53t2fmvmn"]
+
+[ext_resource type="Texture2D" uid="uid://drwdi3sy8d64g" path="res://MiscSprites/icon.svg" id="1_g2w27"]
+
+[node name="Sprite3D" type="Sprite3D"]
+rotation_edit_mode = 1
+texture = ExtResource("1_g2w27")

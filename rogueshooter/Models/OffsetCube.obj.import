@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bq8dv6j77u3rr"
+path="res://.godot/imported/OffsetCube.obj-51ea27abdef86e789780f4f58c7bdc29.mesh"
+
+[deps]
+
+files=["res://.godot/imported/OffsetCube.obj-51ea27abdef86e789780f4f58c7bdc29.mesh"]
+
+source_file="res://Models/OffsetCube.obj"
+dest_files=["res://.godot/imported/OffsetCube.obj-51ea27abdef86e789780f4f58c7bdc29.mesh", "res://.godot/imported/OffsetCube.obj-51ea27abdef86e789780f4f58c7bdc29.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
